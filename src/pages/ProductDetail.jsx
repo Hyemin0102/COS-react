@@ -10,7 +10,7 @@ export default function ProductDetail() {
   const {
       state:{
               product:{
-                      category,
+                      //category,
                       description,
                       id,
                       image,
@@ -33,7 +33,7 @@ export default function ProductDetail() {
   //장바구니 추가 함수
   const handleClick = () =>{
     //product 넘겨줄 값들, id는 사용자의 id 가져와야함
-    const product= {id,title,image,options:selected,price,title,quantity:1}
+    const product= {id,image,options:selected,price,title,quantity:1}
     //addOrUpdateToCart(uid,product) - queryClient 사용하고 성공했을때 지정
     addOrUpdateItem.mutate(product,{
       onSuccess:()=>{
