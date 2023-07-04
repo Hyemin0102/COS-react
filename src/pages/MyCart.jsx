@@ -38,7 +38,7 @@ export default function MyCart() {
         ))}
       </ul>
       <div className='border-t border-black flex-1'>
-        <div className='text-sm flex flex-col justify-between gap-8 mt-2'>
+        <div className='text-sm flex flex-col justify-between gap-8 mt-8'>
           <div className='flex justify-between'>상품 금액<p>{`￦${formatTotelPrice}`}</p></div>
           <div className='flex justify-between'>배송비<p>￦{formatSHIPPING} </p></div>
           <div className='flex justify-between border-t border-slate-200 py-6 text-red-600'>총 금액<p>{`￦${formatTotalCartPrice}`}</p></div>
