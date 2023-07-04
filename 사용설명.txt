@@ -1,0 +1,76 @@
+yarn add react-router-dom react-icons 설치
+npm install -D tailwindcss / yarn add -D tailwindcss
+npx tailwindcss init / yarn tailwindcss init
+->
+
+<index.js>
+가장 상위에 라우터 적용 (index.js) - createBrowserRouter정의
+App 컴포넌트 대신 RouterProvider 적용해서 app 대신
+
+<App.js>
+App.js 에 navbar / outlet 컴포넌트
+
+<firebase -기본 설정>
+프로젝트 추가 -> 웹 앱 추가 -> 콘솔로 이동 -> Authentication(사용자 인증 및 관리) -> 구글 -> 사용설정 -> 빌드 -> Realtime Database 
+
+$yarn add firebase -> firebase.js 생성 -> 웹 앱 추가할때 코드 복붙(프로젝트 설정에서 확인 apiKey,authDomain,projectId 만 필요) -> 키 값은 노출되면 안되니까 .env 파일에서 가져옴
+
+<firebase -인증>
+Authentication -> 문서로 보기 -> 빌드 -> 웹 -> google ->
+import { GoogleAuthProvider } from "firebase/auth";
+const provider = new GoogleAuthProvider(); => firebase.js 파일에 복붙 -> 필수사항 5번..? 로그인 관련 복붙, 로그아웃(signout 부분도 복붙해서 변경)
+
+<로그인 상태 관찰>
+Authentication(사용자 인증 및 관리) -> 구글 -> 사용설정 -> 빌드 -> 웹 -> 시작하기 -> 로그인 상태 관찰 함수 가져옴
+
+<어드민 계정 만들기>
+Realtime Database -> 키:admins 값: user로 가져온 값 중에 uid 코드 등록
+문서 -> 실시간 데이터베이스 -> 웹 -> 시작하기
+<어드민 계정인지 확인하기>
+ 실시간 데이터베이스 -> 웹 -> 데이터 읽기 및 쓰기 -> 데이터 한번 읽기
+<어드민 계정만 보이는 권한 주기>
+비공개되는 컴포넌트 생성, 로그인 상태를 nav에서 정의했기때문에 context 생성해서 전역적으로 사용가능하게 함
+
+
+@firebase/app 오류 발생하면 -> $ yarn add @firebase/app
+
+testhm0102@gmail.com
+Goals1245~
+
+auto rename tag
+bootstrap 5 quick
+
+동영상/이미지 저장
+https://cloudinary.com/
+
+cloude name: dhjix3onq 
+upload_preset: kj6pktek
+
+https://api.cloudinary.com/v1_1/<cloud name>/<resource_type>/upload
+-help -> 문서 -> upload -> uploading assets 에서 코드 가져옴
+
+
+실시간 데이터베이스에 상품등록하려면
+상품마다 고유 아이디값 필요해서 uuid 생성 -> 입력값은 밸류로
+$yarn add react-uuid
+import uuid from 'react-uuid'
+
+firebase 데이터 넣어둔거 json으로 가져오기도 가능
+
+json 가져와서
+
+ <div>
+      {isLoading && <p>Loading</p>}
+      {error && <p>{error}데이터 불러오기에 실패하였습니다.</p>}
+      <ul>
+        {products && products.map((product)=><li>{product.title}</li>)}
+      </ul>
+    </div>
+
+ul 안에 컴포넌트 따로 생성해서 불러옴
+
+
+
+
+
+

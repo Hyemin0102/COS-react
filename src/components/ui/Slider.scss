@@ -1,0 +1,14 @@
+.slider_wrap{
+  .pc{display: none;}
+  @media (min-width:768px){
+    .pc{display: block;}
+    .mobile{display: none;}
+  }
+}
+
+.slick-slider{
+  .slick-arrow{
+    &.slick-next{right: -25px}
+    &.slick-prev{left: -25px;}
+  }
+}

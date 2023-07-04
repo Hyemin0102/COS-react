@@ -1,0 +1,119 @@
+{
+  "admins": "내키값",
+  "products": {
+    "037b023b-e041-6fb4-d43d-3ad9b8cf2da2": {
+      "category": "드레스",
+      "description": "Ralph Lauren의 아이코닉한 폴로 셔츠를 이번 시즌에 새롭게 해석한 블루 앤 화이트 스트라이프 드레스로, 통기성이 좋은 동일한 코튼 소재를 사용했으며 체스트에 시그니처 포니 자수로 마무리하였습니다.",
+      "id": "037b023b-e041-6fb4-d43d-3ad9b8cf2da2",
+      "image": "http://res.cloudinary.com/dfybum5sc/image/upload/v1687931081/srr8yolsd3awbwpmztbf.webp",
+      "options": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 339000,
+      "title": "스트라이프 코튼 메시 폴로 드레스"
+    },
+    "228840f9-628a-f17c-1e6d-04f4d32b2bf6": {
+      "category": "셔츠",
+      "description": "통기성이 좋은 코튼 트윌 소재로 제작된 여유로운 실루엣의 셔츠로, 셸 버튼과 왼쪽 체스트에 시그니처 포니 자수가 돋보입니다.",
+      "id": "228840f9-628a-f17c-1e6d-04f4d32b2bf6",
+      "image": "http://res.cloudinary.com/dfybum5sc/image/upload/v1687931558/oe367xoyjtjdi0evyc6a.webp",
+      "options": [
+        "XXS",
+        " XS",
+        " S",
+        " M",
+        " L"
+      ],
+      "price": 299000,
+      "title": "릴렉스핏 코튼 트윌 셔츠"
+    },
+    "66819a7a-65b7-f299-2ee0-4bda062a47b4": {
+      "category": "드레스",
+      "description": "롤 탭 숏 슬리브와 서플러스 스타일의 포켓이 캐주얼한 느낌을 더해주는 셔츠드레스로, 부드러운 더블 페이스 조젯으로 제작되어 세련된 룩을 선사합니다. 'LRL'이 새겨진 D링 벨트로 액센트를 주었으며 인도의 전통적인 이카트 직조 기법에서 영감을 받아 깃털 장식과 은은한 패턴이 특징인 이번 시즌 모티프를 담아내었습니다.",
+      "id": "66819a7a-65b7-f299-2ee0-4bda062a47b4",
+      "image": "http://res.cloudinary.com/dfybum5sc/image/upload/v1687932111/yjuhsem2xnyxsaybczbm.webp",
+      "options": [
+        "XS",
+        " S",
+        " M",
+        " L"
+      ],
+      "price": 319000,
+      "title": "벨트 더블 페이스 조젯 셔츠드레스"
+    },
+    "874fab8a-9bd7-9189-7663-3529d416409e": {
+      "category": "아웃터",
+      "description": "워싱 처리된 리넨으로 제작되어 부드러운 감촉과 질감을 살린 가벼운 윈드브레이커로, 캐주얼한 여유로운 핏이 특징입니다. 시그니처 포니 자수가 Ralph Lauren 특유의 감성을 더해줍니다.",
+      "id": "874fab8a-9bd7-9189-7663-3529d416409e",
+      "image": "http://res.cloudinary.com/dfybum5sc/image/upload/v1687931948/blbhelusppiwizqi5zzr.webp",
+      "options": [
+        "XXS",
+        " XS",
+        " S",
+        " M",
+        " L"
+      ],
+      "price": 499000,
+      "title": "리넨 윈드브레이커"
+    },
+    "a329c365-ba0e-f3fe-a2d3-334e998cd928": {
+      "category": "셔츠",
+      "description": "통기성이 좋은 면 소재로 제작된 여유로운 핏의 셔츠로, 이번 시즌의 디지털 프린트 패치워크 모티브가 특징입니다.",
+      "id": "a329c365-ba0e-f3fe-a2d3-334e998cd928",
+      "image": "http://res.cloudinary.com/dfybum5sc/image/upload/v1687932283/hllfbrtpqsfuuuvijncc.webp",
+      "options": [
+        "S",
+        " M",
+        " L"
+      ],
+      "price": 599000,
+      "title": "패치워크 모티프 코튼 셔츠"
+    },
+    "a5731d50-01bf-7379-4198-e1b91f299174": {
+      "category": "스웨터",
+      "description": "중간 무게의 코튼 블렌드에 슬림한 실루엣과 올오버 리브 니트 텍스처가 어우러진 숏 슬리브 Polo 카디건입니다.",
+      "id": "a5731d50-01bf-7379-4198-e1b91f299174",
+      "image": "http://res.cloudinary.com/dfybum5sc/image/upload/v1687931268/suwjspqnz4s3v3ioomvk.webp",
+      "options": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 293300,
+      "title": "리브 니트 숏 슬리브 폴로 카디건"
+    },
+    "aeb56efb-6700-e964-9873-aeaebc3a7378": {
+      "category": "데님",
+      "description": "와이드 레그 플레어 실루엣으로 디자인된 부트 진으로, 스트레치 코튼 블렌드로 직조되어 부드러움과 구조적인 느낌이 완벽한 조화를 이룹니다. 랄프 로렌은 베터 코튼(Better Cotton™)과 협력하여 전 세계 목화 재배 환경을 개선합니다.",
+      "id": "aeb56efb-6700-e964-9873-aeaebc3a7378",
+      "image": "http://res.cloudinary.com/dfybum5sc/image/upload/v1687931770/ndiomy5p9fdraotkcbra.webp",
+      "options": [
+        "XS",
+        " S",
+        " M",
+        " L",
+        "XL"
+      ],
+      "price": 359000,
+      "title": "부트 진"
+    },
+    "cf3d66f5-b312-70ea-abf3-13605ad9ccf2": {
+      "category": "팬츠",
+      "description": "와이드 레그 크롭 실루엣으로 재단된 가벼운 스트레치 코튼 트윌 팬츠로, 다리 앞면과 뒷면의 크리스가 특징입니다.",
+      "id": "cf3d66f5-b312-70ea-abf3-13605ad9ccf2",
+      "image": "http://res.cloudinary.com/dfybum5sc/image/upload/v1687931412/jgmbl0myeczazakjzyko.webp",
+      "options": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 299000,
+      "title": "와이드레그 치노 팬츠"
+    }
+  }
+}
