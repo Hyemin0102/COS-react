@@ -2,8 +2,8 @@
 export async function uploadImage(file) {
   const data = new FormData();
   data.append("file", file);
-  data.append("upload_preset", "kj6pktek"); //가져온 값 노출되지 않도록 .env 이용
-  return fetch("https://api.cloudinary.com/v1_1/dhjix3onq/image/upload", {
+  data.append("upload_preset", process.env.REACT_APP_CLOUDINARY_PRESET); //가져온 값 노출되지 않도록 .env 이용
+  return fetch(process.env.REACT_APP_CLOUDINARY_URL, {
     method: "POST",
     body: data,
   }) //여기까진 post 형식으로 클라우드너리 업로드 해줌
