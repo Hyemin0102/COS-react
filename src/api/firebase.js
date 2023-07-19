@@ -1,5 +1,5 @@
 import uuid from "react-uuid";
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "@firebase/app";
 import {
   getAuth,
   signInWithPopup,
@@ -10,10 +10,10 @@ import {
 import { getDatabase, ref, get, set, remove } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  databaseURL: process.env.REACT_APP_FIREBASE_DB_URL,
+  apiKey: "AIzaSyAtZV231iqFS2vqdfS7BNAWhxG6_Hq5XrM",
+  authDomain: "shop-cos.firebaseapp.com",
+  projectId: "shop-cos",
+  databaseURL: "https://shop-cos-default-rtdb.asia-southeast1.firebasedatabase.app",
 };
 
 // Initialize Firebase

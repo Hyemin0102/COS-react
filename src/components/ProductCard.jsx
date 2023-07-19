@@ -12,7 +12,7 @@ const ProductCard = ({product, product:{id,image,title,price,category}}) => {
   //console.log({state:{product}},'뭘 보낸거임??')
 
   return (
-    <li onClick={()=>navigate(`/products/${id}`,{state:{product}} )}>
+    <li className="cursor-pointer" onClick={()=>navigate(`/products/${id}`,{state:{product}} )}>
       <img className='w-full' src={image} alt="상품이미지"/>
       <div>
         <p className='text-xs mt-2 mb-1 truncate'>{title}</p>
