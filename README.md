@@ -8,7 +8,7 @@ COS 쇼핑몰 브랜드 홈페이지를 react로 재구현 한 쇼핑몰 웹사�
 <br>
 
 ## 🔎프로젝트 소개
-https://main--amazing-kulfi-62933e.netlify.app/
+https://astounding-pegasus-6a3f02.netlify.app
 
 firebase google 로그인 연동으로 로그인 기능을 구현하고, 로그인 상태를 context API로 관리해 전역적으로 사용하며, 관리자 계정으로 로그인 한 경우 해당 계정만 상품 관리 탭이 보이도록 구현하였다.
 
@@ -25,6 +25,9 @@ firebase google 로그인 연동으로 로그인 기능을 구현하고, 로그�
   - firebase admin계정 권한 부여 / 실시간 데이터베이스 관리
   - cloudinary 이미지 업로드 로직 함수
   - useQuery hook으로 firebase 실시간 데이터베이스 비동기 가져오기
+* [🛠개선 사항](#개선-사항)
+  - 코드 스플리팅(React.lazy, Suspense)
+* [💡문제 해결](#문제-해결)
 * [😊프로젝트를 마치며](#프로젝트를-마치며)
 
 <br>
@@ -43,17 +46,72 @@ React, react-router-dom, react-query, firebase, cloudinary, tailwind css
 <hr>
 
 # 🚩주요 기능
+* [router](#router)
 * [firebase google 로그인 연동](#firebase-google-로그인-연동)
 * [context api 로그인 정보 관리](#context-api-로그인-정보-관리)
 * [firebase admin계정 권한 부여 / 데이터베이스 관리](#firebase-admin계정-권한-부여)
 * [cloudinary 이미지 업로드 로직 함수](#cloudinary-이미지-업로드-로직-함수)
 * [useQuery hook으로 firebase 실시간 데이터베이스 비동기 가져오기](#useQuery-hook으로-firebase-실시간-데이터베이스-비동기-가져오기)
-* router 페이지 이동
 * tailwind css
 
 <br>
 
 ## 📌코드 리뷰
+
+### 💻router
+```javascript
+const LazyApp = lazy(()=>import("./App"));
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <LazyApp />
+      </Suspense>
+    ),
+    errorElement: <NotFound />,
+    children: [
+      { index: true, path: "/", element: <Home /> },
+      { path: "/products", element: <AllProducts /> },
+      {
+        path: "/products/new",
+        element: (
+          <ProtectedRoute requireAdmin>
+            {" "}
+            {/* admin계정인지 조건 하나 더 붙어서 이게 true 인 경우 */}
+            <NewProduct />
+          </ProtectedRoute>
+        ),
+      },
+      { path: "/products/:id", element: <ProductDetail /> },
+      {
+        path: "/cart",
+        element: (
+          <ProtectedRoute>
+            <MyCart />
+          </ProtectedRoute>
+        ),
+      },
+    ],
+  },
+]);
+```
+
+```javascript
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthContextPorvider>
+        <Navbar />
+        <Outlet />
+      </AuthContextPorvider>
+    </QueryClientProvider>
+  );
+}
+```
+
+<br>
 
 ### 💻firebase google 로그인 연동
 firebase 공식 문서 -> 인증 → 웹 → google 페이지에서 필수 문법을 제공하는데 해당 코드를 가져와서 변경해준다.
@@ -325,6 +383,39 @@ const {isLoading,error,data:products} = useQuery(['products'],getProduct);
 
 ```
 이렇게 로딩중인 경우와 에러 발생했을 경우 정의해주고, 받아온 data 값을 화면에 출력해주면 간단하게 끝난다.
+
+<br>
+<hr>
+
+## 🛠개선 사항
+### 1. 코드 스플리팅
+성능 개선을 위해 Lighthouse 성능 측정 점수를 해보았는데 사용하지 않는 자바스크립트 줄이기 라는 항목으로 성능이 크게 저하된 것을 알 수 있었다. 이에 React.lazy 로 자바스크립트 번들을 분할하는 방법을 사용해 보기로 하였다. (+Suspense 컴포넌트 같이 사용해 lazy 컴포넌트가 로드되는 동안 로딩 화면 보여줌)
+
+<img src="https://github.com/Hyemin0102/COS-react/assets/128768462/e278f0b6-c198-4451-a8ba-957150bb3df6">
+
+<br>
+
+## 🛠문제 해결
+### 1. 코드 스플리팅
+App.js 컴포넌트가 렌더링 되는 것을 분할해 처음 로딩 될 때의 번들링 사이즈를 줄여 초기 페이지 로드를 감소시켰다.
+```javascript
+const LazyApp = lazy(()=>import("./App"));
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <LazyApp />
+      </Suspense>
+    ),
+//...생략
+```
+이것 하나만 변경했는데 성능이 크게 늘어난 것을 확인 할 수 있었다.
+
+<img src="https://github.com/Hyemin0102/COS-react/assets/128768462/852cbb9e-5a65-4504-af35-89a58484b3b4">
+
+앞으로 비동기 데이터를 처리할 경우에도 isLoading으로 상태 관리를 하는 대신 Suspense를 사용하는 방법으로 적용해야겠다. 
 
 <br>
 <hr>

@@ -16,7 +16,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<div>Loading 중입니다</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
         <LazyApp />
       </Suspense>
     ),
