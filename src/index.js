@@ -1,8 +1,7 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import App from "./App";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import AllProducts from "./pages/AllProducts";
@@ -11,10 +10,16 @@ import ProductDetail from "./pages/ProductDetail";
 import MyCart from "./pages/MyCart";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+const LazyApp = lazy(()=>import("./App"));
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <Suspense fallback={<div>Loading 중입니다</div>}>
+        <LazyApp />
+      </Suspense>
+    ),
     errorElement: <NotFound />,
     children: [
       { index: true, path: "/", element: <Home /> },
