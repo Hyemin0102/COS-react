@@ -1,5 +1,5 @@
-<img width="45%" src="https://github.com/Hyemin0102/COS_react/assets/128768462/e3899867-1a62-4371-92b3-2515d5514395">
-<img width="45%" src="https://github.com/Hyemin0102/COS_react/assets/128768462/1577a91e-4c5e-406b-9036-7c06911642a9">
+<img width="45%" src="https://github.com/Hyemin0102/COS-react/assets/128768462/7857d28c-71bc-49fc-a275-0404312370aa">
+<img width="45%" src="https://github.com/Hyemin0102/COS-react/assets/128768462/e2681613-d1a5-4db7-b897-6842a931d640">
 
 
 # COS_shoppingmall
@@ -395,7 +395,7 @@ const {isLoading,error,data:products} = useQuery(['products'],getProduct);
 
 <br>
 
-## 🛠문제 해결
+## 💡문제 해결
 ### 1. 코드 스플리팅
 App.js 컴포넌트가 렌더링 되는 것을 분할해 처음 로딩 될 때의 번들링 사이즈를 줄여 초기 페이지 로드를 감소시켰다.
 ```javascript
