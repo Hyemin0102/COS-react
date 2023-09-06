@@ -8,7 +8,7 @@ COS 쇼핑몰 브랜드 홈페이지를 react로 재구현 한 쇼핑몰 웹사�
 <br>
 
 ## 🔎프로젝트 소개
-https://astounding-pegasus-6a3f02.netlify.app
+https://main-amazing-kulfi-62933e.netlify.app/
 
 firebase google 로그인 연동으로 로그인 기능을 구현하고, 로그인 상태를 context API로 관리해 전역적으로 사용하며, 관리자 계정으로 로그인 한 경우 해당 계정만 상품 관리 탭이 보이도록 구현하였다.
 
