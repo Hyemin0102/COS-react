@@ -3,7 +3,7 @@
 
 
 # COS_shoppingmall
-COS 쇼핑몰 브랜드 홈페이지를 react로 재구현 한 쇼핑몰 웹사이트
+COS 쇼핑몰 홈페이지를 react로 재구현 한 쇼핑몰 웹사이트로 firebase를 활용해 사용자 정보와 데이터 관리가 가능한 웹사이트
 
 <br>
 
