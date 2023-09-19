@@ -25,6 +25,7 @@ firebase google 로그인 연동으로 로그인 기능을 구현하고, 로그�
   - firebase admin계정 권한 부여 / 실시간 데이터베이스 관리
   - cloudinary 이미지 업로드 로직 함수
   - useQuery hook으로 firebase 실시간 데이터베이스 비동기 가져오기
+  - useMutation 카트 업데이트 관리
 * [🛠개선 사항](#개선-사항)
   - 코드 스플리팅(React.lazy, Suspense)
 * [💡문제 해결](#문제-해결)
@@ -52,6 +53,7 @@ React, react-router-dom, react-query, firebase, cloudinary, tailwind css
 * [firebase admin계정 권한 부여 / 데이터베이스 관리](#firebase-admin계정-권한-부여)
 * [cloudinary 이미지 업로드 로직 함수](#cloudinary-이미지-업로드-로직-함수)
 * [useQuery hook으로 firebase 실시간 데이터베이스 비동기 가져오기](#useQuery-hook으로-firebase-실시간-데이터베이스-비동기-가져오기)
+* [useMutation 카트 업데이트 관리](#useMutation-카트-업데이트-관리)
 * tailwind css
 
 <br>
@@ -383,7 +385,69 @@ const {isLoading,error,data:products} = useQuery(['products'],getProduct);
 
 ```
 이렇게 로딩중인 경우와 에러 발생했을 경우 정의해주고, 받아온 data 값을 화면에 출력해주면 간단하게 끝난다.
+<hr>
+<br>
 
+### 💻useMutation 카트 업데이트 관리
+원래는 그냥 useQuery를 사용해 firebase 실시간 데이터베이스의 quantity값을 가져와서 장바구니 추가/삭제하는 만큼 + / - 처리를 해주었는데 이럴 경우 카드 수량에 반영되는데 일정 기간이 소요되어 사용자 입장에서 불편했다. 그래서 이를 해결 하기 위해 useMutation 훅을 사용해 useQuery의 staletime을 무효시켜 실시간으로 반영되게끔 수정했다.
+
+<b>ProductDetail.jsx</b>
+```javascript
+const [success,setSuccess] = useState();//성공표시
+
+const handleClick = () =>{
+    //product 넘겨줄 값들, id는 사용자의 id 가져와야함
+    const product= {id,image,options:selected,price,title,quantity:1}
+    //addOrUpdateToCart(uid,product) - queryClient 사용하고 성공했을때 지정
+    addOrUpdateItem.mutate(product,{
+      onSuccess:()=>{
+        setSuccess('장바구니에 추가 되었습니다.');
+        setTimeout(()=>setSuccess(null),3000)
+      }
+    })
+  }
+//...생략
+const queryClient = useQueryClient();
+  const addOrUpdateItem = useMutation((product)=>addOrUpdateToCart(uid,product),{
+    onSuccess:()=>queryClient.invalidateQueries(['carts',uid || ''])
+    //carts키를 가진 쿼리를 유효하게 만듦
+  })
+```
+이렇게하면 장바구니에 아이템 추가했을 때 CartStatus 의 수량 노출 부분이 실시간으로 업데이트된다. 이와 동일한 방법으로 CartItem에서 수량을 늘리고 줄였을때의 quantity 값도 실시간으로 업데이트 시켜보겠다. 
+
+<b>CartItem.jsx</b>
+```javascript
+import {useMutation,useQueryClient } from '@tanstack/react-query';
+
+const queryClient = useQueryClient();
+  const addOrUpdatePlus = useMutation((product)=>
+  addOrUpdateToCart(uid,{...product,quantity: quantity+1}),{
+    onSuccess:()=>queryClient.invalidateQueries(['carts',uid || ''])
+  });
+
+  const addOrUpdateMinus = useMutation((product)=>
+  addOrUpdateToCart(uid,{...product,quantity: quantity-1}),{
+    onSuccess:()=>queryClient.invalidateQueries(['carts',uid || ''])
+  })
+
+  const removeCart = useMutation(()=>
+  removeFromCart(uid,id),{
+    onSuccess:()=>queryClient.invalidateQueries(['carts',uid || ''])
+  })
+
+	const handleMinus=()=>{
+    if(quantity < 2) return;
+    addOrUpdateMinus.mutate(product);
+  }
+
+  const handlePlus=()=>{
+    addOrUpdatePlus.mutate(product)
+  }
+
+  const handleDelete=()=> removeCart.mutate(uid,id)
+```
+이렇게 수량 업데이트도 실시간으로 구현되게 수정했다!
+useMutation은 아직 생소한 개념이라 헷갈려서 오랫동안 검색하면서 적용했는데 다른 프로젝트에서도 사용해보면서 좀 더 익숙해지게끔 연습해야겠다.
 <br>
 <hr>
 
